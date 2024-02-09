@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: azure; text-align: center;">
+    <form action="">
+        <label for="word">Enter 5 letter Word</label>
+        <input type="text" id="word">
+
+        <button type="button" onclick="func()">Submit</button>
+    </form>
+    <br>
+
+    <textarea name="output" id="output" cols="30" rows="10"></textarea>
+
+    <script>
+        function func()
+        {
+            var ans = "";
+            var str = document.getElementById("word").value;
+            var c = str.split("");
+
+            for(var i=0;i<str.length;i++)
+            {
+                for(var j=0;j<str.length;j++)
+                {
+                    for(var k=0;k<str.length;k++)
+                    {
+                        if(i != j && j != k && i != k)
+                        {
+                            var w = c[i]+c[j]+c[k];
+                            ans+=w;
+                            ans+=" , ";
+                        }
+                    }
+                }
+            }
+
+            document.getElementById("output").value = ans;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="text-align: center;">
+    <div>
+    <form action="">
+        <label for="tele">Enter TelePhone Number : </label>
+        <input type="text" id="tele"><br>
+
+        <button type="button" style="margin: 10px;" onclick="find()">Find Area Code</button>
+    </form>
+    </div>
+
+    <span>Area Code : <textarea name="areacode" id="areacode" cols="30" rows="1"></textarea></span><br>
+    <span>Phone Number : <textarea name="phonenumber" id="phonenumber" cols="30" rows="1"></textarea></span>
+
+    <script>
+        function find()
+        {
+            var str = document.getElementById("tele").value;
+            var tokens = str.split(/[\(\)\s-]+/);
+            var areacode = tokens[1];
+            var phoneNumber = tokens[2];
+            phoneNumber = phoneNumber.concat(tokens[3]);
+
+            document.getElementById("areacode").value = areacode;
+            document.getElementById("phonenumber").value = phoneNumber;
+        }
+    </script>
+</body>
+</html>

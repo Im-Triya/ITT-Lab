@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: azure; text-align: center;">
+    <form action="">
+        <label for="str" style="margin: 10px;">Enter String :</label>
+        <input type="text" name="str" id="str"style="margin: 10px;"><br>
+
+        <button type="button" onclick="leftmostvowel()" style="margin: 10px;">Left Most Vowel</button>
+        <button type="button" onclick="rev()" style="margin: 10px;">Reverse</button>
+    </form>
+
+    <textarea name="output" id="output" cols="30" rows="1" style="margin: 10px;"></textarea>
+
+    <script>
+        function leftmostvowel() {
+            var str = document.getElementById("str").value;
+            var vowels = "aeiouAEIOU";
+            for (var i = 0; i < str.length; i++) {
+                if (vowels.indexOf(str[i]) !== -1) {
+                    document.getElementById("output").value = i+1;
+                    return;
+                }
+            }
+            document.getElementById("output").value = "No Vowel";
+        }
+
+        function rev() {
+            var str = document.getElementById("str").value;
+            var revstr = "";
+            for (var i = str.length - 1; i >= 0; i--) {
+                revstr += str[i];
+            }
+            document.getElementById("output").value = revstr;
+        }
+    </script>
+</body>
+</html>

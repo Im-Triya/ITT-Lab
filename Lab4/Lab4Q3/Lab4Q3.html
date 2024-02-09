@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: azure;
+            text-align: center;
+        }
+        .paragraph-container {
+            width: 500px;
+            margin: 10px auto;
+            position: relative;
+        }
+        .paragraph {
+            position: absolute;
+            width: 100%;
+            transition: z-index 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="paragraph-container" onmouseover="moveToTop(this)">
+        <div id="first" class="paragraph" style="background-color: rgb(201, 245, 231); z-index: 1;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium molestias repellendus commodi totam optio tenetur explicabo repudiandae odio officia tempora? Autem, debitis laboriosam alias perspiciatis adipisci ipsa eligendi voluptates sequi.</p>
+        </div>
+
+        <div id="second" class="paragraph" style="background-color: rgb(139, 193, 176); z-index: 2;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium molestias repellendus commodi totam optio tenetur explicabo repudiandae odio officia tempora? Autem, debitis laboriosam alias perspiciatis adipisci ipsa eligendi voluptates sequi.</p>
+        </div>
+
+        <div id="third" class="paragraph" style="background-color: rgb(65, 101, 90); z-index: 3;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium molestias repellendus commodi totam optio tenetur explicabo repudiandae odio officia tempora? Autem, debitis laboriosam alias perspiciatis adipisci ipsa eligendi voluptates sequi.</p>
+        </div>
+    </div>
+
+    <script>
+        function moveToTop(element) {
+            var paragraphs = element.querySelectorAll('.paragraph');
+            var maxZIndex = 0;
+            var targetParagraph = null;
+
+            paragraphs.forEach(function(paragraph) {
+                var zIndex = parseInt(window.getComputedStyle(paragraph).zIndex);
+                if (zIndex > maxZIndex) {
+                    maxZIndex = zIndex;
+                    targetParagraph = paragraph;
+                }
+            });
+
+            if (targetParagraph) {
+                paragraphs.forEach(function(paragraph) {
+                    if (paragraph !== targetParagraph) {
+                        paragraph.style.zIndex = parseInt(paragraph.style.zIndex) - 1;
+                    }
+                });
+                targetParagraph.style.zIndex = paragraphs.length;
+            }
+        }
+    </script>
+</body>
+</html>

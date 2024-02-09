@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+    <p id="demo">Hi</p>
+
+    <script>
+        var str1 = "TEXT-GROWING";
+        var str2 = "TEXT-SHRINKING";
+        var size = 2;
+        var timer = setInterval(increase, 100);
+
+        function increase()
+        {
+            document.getElementById("demo").innerHTML=str1;
+            size+=2;
+            document.getElementById("demo").setAttribute("style", "font-size:"+size+"px; color: red");
+
+            if(size >= 100)
+            {
+                clearInterval(timer);
+                timer = setInterval(decrease, 100);
+            }
+        }
+        function decrease()
+        {
+            document.getElementById("demo").innerHTML=str2;
+            size-=2;
+            document.getElementById("demo").setAttribute("style", "font-size:"+size+"px; color: blue");
+
+            if(size <=2)
+            {
+                clearInterval(timer);
+                timer = setInterval(increase, 100);
+            }
+        }
+    </script>
+</body>
+</html>
